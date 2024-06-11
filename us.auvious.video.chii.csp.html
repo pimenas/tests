@@ -4,7 +4,7 @@
     <!--
       These are the CSP rules that auvious needs
 
-      default-src 'self' https://us.auvious.video https://apps.mypurecloud.com 'unsafe-inline'
+      style-src https://us.auvious.video https://apps.mypurecloud.com 'unsafe-inline'
       script-src https://us.auvious.video https://apps.{gcEnvironment} blob:
       connect-src https://us.auvious.video wss://us.auvious.video https://sentry.auvious.com https://api.{gcEnvironment} wss://streaming.{gcEnvironment}
       frame-src https://us.auvious.video
@@ -13,7 +13,7 @@
     -->
     <meta
       http-equiv="Content-Security-Policy"
-      content="default-src 'self' https://us.auvious.video https://apps.mypurecloud.com 'unsafe-inline'; script-src https://chii-yhveozztpa-ew.a.run.app https://us.auvious.video https://apps.mypurecloud.de blob:; connect-src wss://chii-yhveozztpa-ew.a.run.app https://us.auvious.video wss://us.auvious.video wss://events.us.auvious.video https://sentry.auvious.com https://api.mypurecloud.de wss://streaming.mypurecloud.de; frame-src https://us.auvious.video; worker-src blob:; img-src 'self' * blob: data:; object-src 'none'"
+      content="default-src 'self'; style-src https://us.auvious.video https://apps.mypurecloud.com 'unsafe-inline'; script-src https://chii-yhveozztpa-ew.a.run.app https://us.auvious.video https://apps.mypurecloud.de blob:; connect-src wss://chii-yhveozztpa-ew.a.run.app https://us.auvious.video wss://us.auvious.video wss://events.us.auvious.video https://sentry.auvious.com https://api.mypurecloud.de wss://streaming.mypurecloud.de; frame-src https://us.auvious.video; worker-src blob:; img-src 'self' * blob: data:; object-src 'none'"
     />
     <script src="https://chii-yhveozztpa-ew.a.run.app/target.js"></script>
     <script
