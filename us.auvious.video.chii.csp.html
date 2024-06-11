@@ -1,0 +1,53 @@
+<html>
+  <head>
+    <title>Test General CSP rules</title>
+    <!--
+      These are the CSP rules that auvious needs
+
+      default-src 'self' https://us.auvious.video https://apps.mypurecloud.com 'unsafe-inline'
+      script-src https://us.auvious.video https://apps.{gcEnvironment} blob:
+      connect-src https://us.auvious.video wss://us.auvious.video https://sentry.auvious.com https://api.{gcEnvironment} wss://streaming.{gcEnvironment}
+      frame-src https://us.auvious.video
+      img-src 'self' * blob: data:
+      child-src blob:
+    -->
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self' https://us.auvious.video https://apps.mypurecloud.com 'unsafe-inline'; script-src https://chii-yhveozztpa-ew.a.run.app https://us.auvious.video https://apps.mypurecloud.de blob:; connect-src wss://chii-yhveozztpa-ew.a.run.app https://us.auvious.video wss://us.auvious.video https://sentry.auvious.com https://api.mypurecloud.de wss://streaming.mypurecloud.de; frame-src https://us.auvious.video; worker-src blob:; img-src 'self' * blob: data:; object-src 'none'"
+    />
+    <script src="https://chii-yhveozztpa-ew.a.run.app/target.js"></script>
+    <script
+      type="module"
+      src="https://us.auvious.video/widget/dist/auvious/auvious.esm.js"
+    ></script>
+    <script
+      nomodule=""
+      src="https://us.auvious.video/widget/dist/auvious/auvious.js"
+    ></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <h1>Test General CSP rules</h1>
+    <app-auvious-widget
+      id="widget"
+      style="display: inline-block"
+      pc-environment="mypurecloud.de"
+      pc-organization-id="6e6d5224-1909-48fa-a982-66cef3fa4c08"
+      pc-deployment-id="6820a6a6-3755-4152-8d3f-53e7e8d2bedc"
+      application-id="429892d7-2b8f-472b-ac0b-5844c3127723"
+      pc-queue="Epi"
+      chat-mode="genesys-cloud"
+      active-widgets="video,chat,cobrowse"
+      auvious-environment="us.auvious.video"
+      wait-for-greeting-seconds="-1"
+      position-horizontal="left"
+      position-vertical="bottom"
+      color-accent="rgb(38,5,112)"
+      kiosk-mode="true"
+      greeting-action="chat"
+      locale="en-US"
+      customer-display-name="Epi"
+      class="hydrated"
+    ></app-auvious-widget>
+  </body>
+</html>
