@@ -46,5 +46,21 @@
       customer-display-name="Epi"
       class="hydrated"
     ></app-auvious-widget>
+    <script>
+      (async () => {
+        await customElements.whenDefined("app-auvious-widget");
+        const widget = document.querySelector("app-auvious-widget");
+
+        // set schedule
+        widget.setSchedule({
+          timeZone: "Europe/Athens",
+          schedule: {
+            open: [
+              { weekdays: [2, 3, 4, 5, 6], time: "10:00/21:00" },
+            ],
+          },
+        });
+      })();
+    </script>
   </body>
 </html>
