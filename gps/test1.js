@@ -15,8 +15,6 @@ function startCamera(facingMode) {
     navigator.mediaDevices.getUserMedia({
         video: {
             facingMode: facingMode, // Use 'user' for the front camera
-            width: { ideal: 1280 },
-            height: { ideal: 720 }
         }
     })
     .then(stream => {
