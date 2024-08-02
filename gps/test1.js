@@ -3,6 +3,7 @@ const video = document.getElementById('video');
 const canvas = document.getElementById('canvas');
 const captureButton = document.getElementById('capture');
 const locationDisplay = document.getElementById('location');
+const mapLink = document.getElementById('map-link');
 const context = canvas.getContext('2d');
 
 // Access the camera
@@ -33,12 +34,19 @@ captureButton.addEventListener('click', () => {
             context.font = '20px Arial';
             context.fillStyle = 'red';
             context.fillText(`Lat: ${latitude.toFixed(6)}, Lon: ${longitude.toFixed(6)}`, 10, 30);
+
+            // Create a map link
+            const mapUrl = `https://maps.google.com/?q=${latitude},${longitude}`;
+            mapLink.href = mapUrl;
+            mapLink.style.display = 'block';
         }, error => {
             console.error('Error getting location:', error);
             locationDisplay.textContent = 'Unable to retrieve location.';
+            mapLink.style.display = 'none';
         });
     } else {
         console.log('Geolocation is not supported by this browser.');
         locationDisplay.textContent = 'Geolocation not supported.';
+        mapLink.style.display = 'none';
     }
 });
