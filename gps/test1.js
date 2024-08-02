@@ -2,18 +2,43 @@
 const video = document.getElementById('video');
 const canvas = document.getElementById('canvas');
 const captureButton = document.getElementById('capture');
+const switchCameraButton = document.getElementById('switch-camera');
 const locationDisplay = document.getElementById('location');
 const mapLink = document.getElementById('map-link');
 const context = canvas.getContext('2d');
 
-// Access the camera
-navigator.mediaDevices.getUserMedia({ video: true })
+// Initialize facingMode
+let currentFacingMode = 'environment';
+
+// Function to start the camera with the specified facing mode
+function startCamera(facingMode) {
+    navigator.mediaDevices.getUserMedia({
+        video: {
+            facingMode: facingMode, // Use 'user' for the front camera
+            width: { ideal: 1280 },
+            height: { ideal: 720 }
+        }
+    })
     .then(stream => {
         video.srcObject = stream;
     })
     .catch(error => {
         console.error('Error accessing camera:', error);
+        alert('Could not access the camera. Please check camera permissions.');
     });
+}
+
+// Start the camera with the initial facing mode
+startCamera(currentFacingMode);
+
+// Add event listener to switch the camera
+switchCameraButton.addEventListener('click', () => {
+    // Toggle facing mode
+    currentFacingMode = currentFacingMode === 'environment' ? 'user' : 'environment';
+    
+    // Restart the camera with the new facing mode
+    startCamera(currentFacingMode);
+});
 
 // Get location and capture photo
 captureButton.addEventListener('click', () => {
@@ -22,7 +47,7 @@ captureButton.addEventListener('click', () => {
         navigator.geolocation.getCurrentPosition(position => {
             const { latitude, longitude } = position.coords;
             locationDisplay.textContent = `Latitude: ${latitude.toFixed(6)}, Longitude: ${longitude.toFixed(6)}`;
-            
+
             // Set canvas dimensions to match the video
             canvas.width = video.videoWidth;
             canvas.height = video.videoHeight;
